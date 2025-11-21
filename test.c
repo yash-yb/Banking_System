@@ -8,6 +8,8 @@ struct usrlist
 	unsigned long hashed;
 };
 
+int userlen;
+
 // the hashing function
 unsigned long
     hash(unsigned char *str)
@@ -21,6 +23,7 @@ unsigned long
         return hash;
     }
 
+struct usrlist u[100];
 
 int global = 0;
 
@@ -39,9 +42,28 @@ int main(void)
 
 	strcpy(u[3].usrnm, "Yash123");
 	u[3].hashed = hash("Yash123");
-	
+
+	userlen = 3;
+
 	for (int i = 0; i < 4; i++)
 	{
 		printf("%s\n%lu\n", u[i].usrnm, u[i].hashed);
 	}
+}
+
+//username adding 
+
+int addu()
+{
+	char temp[100];
+
+	printf("Enter your username you want to add:\n");
+	scanf("%s", u[userlen + 1].usrnm);
+
+	userlen++;
+
+	printf("Enter the new password for username: \n");
+	scanf("%s", temp);
+	
+
 }
