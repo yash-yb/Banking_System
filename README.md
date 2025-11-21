@@ -4,7 +4,8 @@ This Repo will focus on making a banking system which will be divided into some 
 Please while pushing your code, create a new branch of your name until you are not sure that the module's are bug free and are integrating properly
 
 main key features : 
-1.Users : 
+
+1.Users :
 	1. Creation
 	2. Updation
 	3. Deletion
