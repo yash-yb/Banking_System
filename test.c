@@ -1,54 +1,47 @@
 #include <stdio.h>
+#include <string.h>
+
+//structure for our database can be expanded
+struct usrlist
+{
+	char usrnm[30];
+	unsigned long hashed;
+};
+
+// the hashing function
+unsigned long
+    hash(unsigned char *str)
+    {
+        unsigned long hash = 5381;
+        int c;
+
+        while (c = *str++)
+            hash = ((hash << 5) + hash) + c; /* hash * 33 + c */
+
+        return hash;
+    }
+
 
 int global = 0;
 
-int password(void)
+int main(void)
 {
-	char usrnmlist[3][30] =  {"a","b","snehal"}, iusrnm[1][30];
-	char pswrd[3][30] = { "1234","2345","sne26san" } ,ipswrd[1][30];
-	int try = 5,f = 0,p = 0;
-	printf("Enter the username\n");
-	scanf("%s", iusrnm[0]);
+	struct usrlist u[100];
 	
-	//username section
+	strcpy(u[0].usrnm, "Sanskar123");
+	u[0].hashed = hash("Sanskar123");
+
+	strcpy(u[1].usrnm, "Atharva123");
+	u[1].hashed = hash("Atharva123");
+
+	strcpy(u[2].usrnm, "Kunal123");
+	u[2].hashed = hash("Kunal123");
+
+	strcpy(u[3].usrnm, "Yash123");
+	u[3].hashed = hash("Yash123");
 	
-	for(int i = 0; i < 3; i++)
+	for (int i = 0; i < 4; i++)
 	{
-		if(strcmp(usrnmlist[i], iusrnm[0]) == 0)
-		{
-			f = 1;
-			p = i;
-			break;
-		}
-	}
-	if(f == 0)
-	{
-		printf("\033[31mUsername not found.\033[0m\n");
-		return 0;
-	}
-	
-	//psswrd section
-	clear();
-	printf("Username Detected.\nEnter the password.\n");
-	scanf("%s", ipswrd[0]);
-	
-	while( strcmp(pswrd[p], ipswrd[0]) != 0 && try > 0)
-	{	
-		printf("\033[31mWrong Password !! Please enter the password again.\033[0m\n");
-	 	scanf("%s", ipswrd[0]);
-	 	try--;
-	 	clear();
-	 	printf("You have %i tries remaining.\n", try);
-	}
-	if(try == 0)
-	{
-		clear();
-		printf("\033[31mAuthentication failed. Contact the bank for more details. (CODE 0)\033[0m\n");
-		global = 0;
-	}
-	else
-	{
-	clear();
-	global = 1;
+		printf("%s\n%lu\n", u[i].usrnm, u[i].hashed);
 	}
 }
