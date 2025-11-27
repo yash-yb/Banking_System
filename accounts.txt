@@ -1,0 +1,11 @@
+<unique_id/account_number>$$<account_name>$$<encrypted_password>$$<address>$$<phone_number> (ending me \n)
+
+
+this just a basic idea about how the user's information will be stored
+
+For delimiters between each field we will us "$$"
+
+and to get the details for the user we will make varification thorugh <unique_id>,<decrypted_password> and <phone_number>
+
+for each creation of the account we will make a new file for that account, with the file's name being the <account_number>.txt
+
