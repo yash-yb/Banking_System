@@ -1,14 +1,17 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 //structure for our database can be expanded
 struct usrlist
 {
-	char usrnm[30];
+	char *usrnm;
 	unsigned long hashed;
 };
 
-int userlen;
+int userlen = 0;
+int capacity = 0;
+
 
 // the hashing function
 unsigned long
@@ -23,7 +26,7 @@ unsigned long
         return hash;
     }
 
-struct usrlist u[100];
+
 
 int global = 0;
 
@@ -45,10 +48,6 @@ int main(void)
 
 	userlen = 3;
 
-	for (int i = 0; i < 4; i++)
-	{
-		printf("%s\n%lu\n", u[i].usrnm, u[i].hashed);
-	}
 }
 
 //username adding 
@@ -65,5 +64,5 @@ int addu()
 	printf("Enter the new password for username: \n");
 	scanf("%s", temp);
 	
-
+	u[userlen].hashed = hash(temp);
 }
